@@ -9,7 +9,10 @@ trigger:
 pool:
   name: Default
 
-steps:
+steps:  
+- task: Checkout@1
+  inputs:
+     clean: true 
 - task: Docker@2
   inputs:
     command: 'buildAndPush'
