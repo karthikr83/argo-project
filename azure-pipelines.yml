@@ -14,7 +14,7 @@ steps:
   inputs:
     command: 'buildAndPush'
     repository: 'karthikr83/argo-project'
-    dockerfile: '**/Dockerfile'
+    dockerfile: 'node-app/Dockerfile'
     containerRegistry: 'argo_connection'
     tags: 'latest'
 
