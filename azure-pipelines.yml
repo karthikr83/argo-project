@@ -13,7 +13,7 @@ steps:
 - task: Docker@2
   inputs:
     command: 'buildAndPush'
-    repository: 'karthikr83/argo-project'
+    repository: 'karthikr83/my-node-app'
     dockerfile: 'node-app/Dockerfile'
     containerRegistry: 'argo_connection'
     tags: 'latest'
