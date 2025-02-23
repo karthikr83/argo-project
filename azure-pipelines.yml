@@ -10,9 +10,6 @@ pool:
   name: Default
 
 steps:  
-- task: Checkout@1
-  inputs:
-     clean: true 
 - task: Docker@2
   inputs:
     command: 'buildAndPush'
