@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('Hello, this is my Node.js app running in Docker! Executed by Karthik_GEICO');
+  res.send('Hello, this is my Node.js app running in Docker! Executed by Karthik_IBM');
 });
 
 app.listen(3000, () => {
