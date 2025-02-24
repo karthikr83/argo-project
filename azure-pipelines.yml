@@ -40,7 +40,9 @@ steps:
     repository: 'karthikr83/my-node-app'
     dockerfile: 'node-app/Dockerfile'
     containerRegistry: 'argo_connection'
-    tags: '$(Build.BuildId)'
+    tags: |
+      $(Build.BuildId)
+      latest
 
 - script: |
     kubectl set image deployment/my-node-app my-node-app=karthikr83/my-node-app:$(Build.BuildId)
