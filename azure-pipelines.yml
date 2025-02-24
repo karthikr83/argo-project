@@ -3,21 +3,45 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+#trigger:
+#- main
+
+
+#pool:
+ # name: Default
+
+#steps:  
+#- task: Docker@2
+#  inputs:
+ #   command: 'buildAndPush'
+  #  repository: 'karthikr83/my-node-app'
+   # dockerfile: 'node-app/Dockerfile'
+   # containerRegistry: 'argo_connection'
+    #tags: '$(Build.BuildId)'
+
+#- script: |
+ #   kubectl apply -f k8s/deployment.yaml
+  #displayName: 'Deploy to Kubernetes'
+
 trigger:
 - main
 
 pool:
   name: Default
 
-steps:  
+steps:
+- task: Checkout@1
+  inputs:
+    clean: true
+
 - task: Docker@2
   inputs:
     command: 'buildAndPush'
     repository: 'karthikr83/my-node-app'
     dockerfile: 'node-app/Dockerfile'
     containerRegistry: 'argo_connection'
-    tags: 'latest'
+    tags: '$(Build.BuildId)'
 
 - script: |
-    kubectl apply -f k8s/deployment.yaml
-  displayName: 'Deploy to Kubernetes'
+    kubectl set image deployment/my-node-app my-node-app=karthikr83/my-node-app:$(Build.BuildId)
+  displayName: 'Update Kubernetes Deployment'
