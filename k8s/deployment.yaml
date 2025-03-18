@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: my-node-app
-          image: karthikr83/my-node-app:$(Build.BuildId)
-          imagepullpolicy: Always  
+          image: karthikr83/my-node-app:v1
+          imagePullPolicy: Always  
           ports:
             - containerPort: 3000
 ---
